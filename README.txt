@@ -2,7 +2,7 @@
 Persona 3 Reload Date Recogniser
 
 This project uses Python generate synthetic images of the "date" icon on the top right of the P3R screen.
-It can generate a database of those synthetic images, and train a NN model to recognise the "date" images, 
+It can generate a database of those synthetic images, and train a CNN model to recognise the "date" images, 
 both synthetic, and from the game.
 
 The Python libaries used are:
