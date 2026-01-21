@@ -19,7 +19,6 @@ def create_pillow_gradient(width, height):
     return Image.merge("RGB", channels).resize((width, height)).convert("RGBA")
 
 def generate_image_and_label():
-    """Returns both the image array and the date string (the label)."""
     start_date = datetime(2009, 4, 1)
     end_date = datetime(2010, 1, 31)
     target_date = start_date + timedelta(days=random.randrange((end_date - start_date).days))
@@ -71,7 +70,7 @@ def save_database(n_images=2000, filename="image_dataset.npz"):
         images=np.array(images_list), 
         labels=np.array(labels_list)
     )
-    print(f"Done, saved {n_images} samples to {filename}")
+    print(f"Saved {n_images} samples to {filename}")
 
 if __name__ == "__main__":
     save_database(20000)

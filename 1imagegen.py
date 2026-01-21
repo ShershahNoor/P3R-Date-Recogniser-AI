@@ -3,7 +3,6 @@ from datetime import datetime, timedelta
 from PIL import Image, ImageDraw, ImageFont
 
 def get_muted_colors():
-    """Returns a random tan and a random peach from the muted pastel palette."""
     tans = [
         (160, 140, 115),
         (145, 120, 105), 
@@ -17,7 +16,6 @@ def get_muted_colors():
     return random.choice(tans), random.choice(peaches)
 
 def create_pillow_gradient(width, height):
-    """Generates the background gradient as an image."""
     c1, c2 = get_muted_colors()
     
     generate = Image.linear_gradient('L') 

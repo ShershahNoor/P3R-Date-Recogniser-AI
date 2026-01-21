@@ -26,7 +26,7 @@ class DateCNN(nn.Module):
         x = x.view(x.size(0), -1)
         return self.fc_layers(x)
 
-def predict_date(image_path, model_path="date_model.pth"):
+def recognise_date(image_path, model_path="date_model.pth"):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     
     model = DateCNN().to(device)
@@ -35,7 +35,7 @@ def predict_date(image_path, model_path="date_model.pth"):
     
     chars = "0123456789/"
     img = Image.open(image_path).convert('L')
-    prediction = ""
+    recognisation = ""
     
     with torch.no_grad():
         for i in range(5):
@@ -47,15 +47,15 @@ def predict_date(image_path, model_path="date_model.pth"):
             
             output = model(tensor)
             char_idx = torch.argmax(output, dim=1).item()
-            prediction += chars[char_idx]
+            recognisation += chars[char_idx]
             
-    return prediction
+    return recognisation
 
 if __name__ == "__main__":
     image_to_check = "test_image.png" 
     
     try:
-        guessed_date = predict_date(image_to_check)
+        guessed_date = recognise_date(image_to_check)
         print(f"--- RECOGNITION COMPLETE ---")
         print(f"AI Guessed Date: {guessed_date}")
     except FileNotFoundError:

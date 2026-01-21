@@ -79,7 +79,6 @@ def run_ai_pipeline(npz_path):
     return model
 
 def predict_date(image_path, model):
-    """Takes a single PNG file and returns the predicted date string."""
     model.eval()
     chars = "0123456789/"
     img = Image.open(image_path).convert('L')
